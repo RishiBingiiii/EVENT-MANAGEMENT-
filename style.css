@@ -1,0 +1,264 @@
+/* ==================================================================
+   EventHub — visual identity v2
+   ------------------------------------------------------------------
+   Concept: category color-coding as the navigation system. Each event
+   category carries its own real hue everywhere it appears (badges,
+   card accents, calendar chips), so color does information work
+   instead of just decorating. Base surface stays clean so the
+   category colors actually read clearly.
+
+   Palette:
+     Workshops    #7c3aed (violet)
+     Tech Events  #2563eb (blue)
+     Sports       #059669 (emerald)
+     Cultural     #e11d48 (rose)
+     Brand accent #4f46e5 (indigo) — buttons, links, hero
+     Surface      #ffffff / #f1f5f9
+     Text         #1e293b (slate-900) / #64748b (slate-500, secondary)
+   Type: Poppins (display) · Inter (body/UI)
+   ================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --brand: #4f46e5;
+    --brand-dark: #4338ca;
+    --cat-workshops: #7c3aed;
+    --cat-tech: #2563eb;
+    --cat-sports: #059669;
+    --cat-cultural: #e11d48;
+    --ink: #1e293b;
+    --muted: #64748b;
+    --surface: #ffffff;
+    --bg: #f1f5f9;
+    --border: #e2e8f0;
+    --success: #059669;
+    --warning: #d97706;
+    --error: #dc2626;
+    --radius: 10px;
+}
+
+html,
+body,
+[data-testid="stAppViewContainer"] {
+    background-color: var(--bg) !important;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+}
+
+[data-testid="stSidebar"] {
+    background-color: var(--surface);
+    border-right: 1px solid var(--border);
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+}
+
+/* ---------------------------------------------------------------- Hero */
+
+.hero {
+    background: linear-gradient(120deg, var(--brand) 0%, #7c3aed 50%, #2563eb 100%);
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 1.75rem;
+    box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.4);
+}
+
+.hero h1 {
+    margin: 0 0 0.4rem 0;
+    font-size: 2.5rem;
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.hero p {
+    margin: 0;
+    opacity: 0.92;
+    font-size: 1.05rem;
+    font-family: 'Inter', sans-serif;
+    max-width: 32rem;
+}
+
+/* ----------------------------------------------------------- Tab bar */
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1.75rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--brand) !important;
+}
+
+.stTabs [data-baseweb="tab-highlight"] {
+    background-color: var(--brand) !important;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+}
+
+/* ---------------------------------------------------------------- Forms */
+
+div[data-testid="stForm"] {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.4rem 0.4rem 1.4rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+/* ----------------------------------------------------------- Buttons */
+
+.stButton button,
+.stFormSubmitButton button {
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: white;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+}
+
+.stButton button:hover,
+.stFormSubmitButton button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+}
+
+.stButton button:active,
+.stFormSubmitButton button:active {
+    transform: translateY(0);
+}
+
+.stButton button:disabled {
+    background: #cbd5e1;
+    color: #94a3b8;
+    box-shadow: none;
+}
+
+/* --------------------------------------------------------- Containers */
+
+div[data-testid="stExpander"] {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    border-radius: var(--radius) !important;
+    border: 1px solid var(--border) !important;
+    background: var(--surface);
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+}
+
+/* ----------------------------------------------------------- Progress */
+
+.stProgress>div>div>div>div {
+    background: linear-gradient(90deg, var(--brand), #7c3aed);
+}
+
+/* -------------------------------------------------------------- Metric */
+
+[data-testid="stMetricValue"] {
+    color: var(--brand);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ---------------------------------------------------------- Alerts */
+
+[data-testid="stSuccess"] {
+    background-color: #ecfdf5;
+    border: 1px solid #6ee7b7;
+    border-left: 4px solid var(--success);
+}
+
+[data-testid="stWarning"] {
+    background-color: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-left: 4px solid var(--warning);
+}
+
+[data-testid="stError"] {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-left: 4px solid var(--error);
+}
+
+[data-testid="stInfo"] {
+    background-color: #eff6ff;
+    border: 1px solid #93c5fd;
+    border-left: 4px solid var(--cat-tech);
+}
+
+/* ------------------------------------------------------------ Chat */
+
+[data-testid="stChatMessage"] {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+/* --------------------------------------------------------- Dataframe */
+
+[data-testid="stDataFrame"] {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+/* -------------------------------------------------------------- Misc */
+
+hr {
+    border-color: var(--border);
+}
+
+[data-testid="stMarkdownContainer"] code {
+    background-color: #eef2ff;
+    color: var(--brand-dark);
+    border-radius: 4px;
+    padding: 0.15rem 0.4rem;
+    font-weight: 500;
+}
+
+/* ----------------------------------------------------- Category chips
+   Used via inline class on category badges injected from app.py, e.g.
+   <span class="cat-chip cat-workshops">Workshops</span>                  */
+
+.cat-chip {
+    display: inline-block;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.cat-workshops {
+    background: #f3e8ff;
+    color: var(--cat-workshops);
+}
+
+.cat-tech {
+    background: #dbeafe;
+    color: var(--cat-tech);
+}
+
+.cat-sports {
+    background: #d1fae5;
+    color: var(--cat-sports);
+}
+
+.cat-cultural {
+    background: #ffe4e6;
+    color: var(--cat-cultural);
+}
